@@ -88,26 +88,37 @@ int	ft_controller(t_controller *controller)
 
 void	*philosopher(t_philo *philo)
 {
+	usleep((philo->param->number_of_philosophers * 10) - (philo->id * 10));
 	while (1)
 	{
-		if (philo->param->state == GAMEOVER)
-			return (NULL);
-		take_forks(philo);
-		philo->lastmeal = get_useconds();
-		pthread_mutex_lock(&philo->param->print);
-		printf("%zu %d has taken a fork \n", get_useconds(), philo->id);
-		printf("%zu %d is eating \n", get_useconds(), philo->id);
-		pthread_mutex_unlock(&philo->param->print);
-		philo->eat_time++;
-		ft_usleep(philo->param->time_to_eat);
-		put_forks(philo);
-		pthread_mutex_lock(&philo->param->print);
-		printf("%zu %d is sleeping \n", get_useconds(), philo->id);
-		pthread_mutex_unlock(&philo->param->print);
-		ft_usleep(philo->param->time_to_sleep);
-		pthread_mutex_lock(&philo->param->print);
-		printf("%zu %d is thiking \n", get_useconds(), philo->id);
-		pthread_mutex_unlock(&philo->param->print);
+		// if (philo->param->state == GAMEOVER)
+		// 	return (NULL);
+		if (philo->forksatate == FREEFORK
+			&& philo->left->forksatate == FREEFORK)
+		{
+			philo->forksatate = LOCKEDFORK;
+			philo->left->forksatate = LOCKEDFORK;
+			take_forks(philo);
+			philo->lastmeal = get_useconds();
+			pthread_mutex_lock(&philo->param->print);
+			pthread_mutex_unlock(&philo->param->print);
+			printf("%zu %d has taken a fork \n", get_useconds(), philo->id);
+			printf("%zu %d is eating \n", get_useconds(), philo->id);
+			philo->eat_time++;
+			ft_usleep(philo->param->time_to_eat);
+			put_forks(philo);
+			philo->forksatate = FREEFORK;
+			philo->left->forksatate = FREEFORK;
+			pthread_mutex_lock(&philo->param->print);
+			pthread_mutex_unlock(&philo->param->print);
+			printf("%zu %d is sleeping \n", get_useconds(), philo->id);
+			ft_usleep(philo->param->time_to_sleep);
+			pthread_mutex_lock(&philo->param->print);
+			pthread_mutex_unlock(&philo->param->print);
+			printf("%zu %d is thiking \n", get_useconds(), philo->id);
+		}
+		else
+			usleep(100);
 	}
 }
 
@@ -232,7 +243,7 @@ int	createthreads(t_arg *param)
 	while (i <= param->number_of_philosophers)
 	{
 		pthread_create(&tmp->philo, NULL, (void *)philosopher, tmp);
-		usleep(200);
+		usleep(50);
 		tmp = tmp->right;
 		i++;
 	}
@@ -254,9 +265,9 @@ int	createthreads(t_arg *param)
 
 int	main(int argc, char **argv)
 {
-	t_arg param;
 	t_philo *head;
 	pthread_t *forks;
+	t_arg param;
 
 	if (argc < 5 || argc > 6)
 	{
