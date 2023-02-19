@@ -1,26 +1,41 @@
-SRCS =	philo.c
+SRCS =	man/philo.c man/controller.c man/philolife.c man/pthreads.c man/time.c
+
+SRCSB =	bonus/forks_bonus.c bonus/ft_itoa_bonus.c bonus/philo_bonus.c bonus/time_bonus.c 
 
 NAME = philo
 
+BONUS = philo_bonus
+
 OBJS = $(SRCS:.c=.o)
+OBJSB = $(SRCSB:.c=.o)
 
-CC_FLAGS = -Wall -Wextra -Werror
+MH = man/philo.h
+BH = bonus/philo_bonus.h
 
-# %_bonus.o : %.c philo_bonus.h
-# 	@cc  -c $<
+CC_FLAGS = -Wall -Wextra -Werror  #fsanitize=thread
 
-%.o : %.c philo.h
-	@cc  -c $<
+all: $(NAME)
+
+bonus: $(BONUS)
+
+%_bonus.o : %_bonus.c $(BH)
+	@cc -c $< -o $@
+
+%.o : %.c $(MH)
+	@cc $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	@cc $(OBJS) -o $(NAME)
-all: $(NAME)
+
+$(BONUS): $(OBJSB)
+	@cc $(OBJSB) -o $(BONUS)
+	
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJSB)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS)
 
 re: fclean all
 
