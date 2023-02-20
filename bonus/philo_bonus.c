@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:36:18 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/19 19:25:36 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:18:08 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ int	main(int argc, char **argv)
 	}
 	save_arg(&param, argc, argv);
 	starprocess(&param);
+	return (0);
 }

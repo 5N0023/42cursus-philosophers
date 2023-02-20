@@ -1,6 +1,6 @@
 SRCS =	man/philo.c man/controller.c man/philolife.c man/pthreads.c man/time.c
 
-SRCSB =	bonus/forks_bonus.c bonus/ft_itoa_bonus.c bonus/philo_bonus.c bonus/time_bonus.c 
+SRCSB =	bonus/forks_bonus.c bonus/ft_itoa_bonus.c bonus/philo_bonus.c bonus/philolife_bonus.c bonus/time_bonus.c  bonus/utils_bonus.c
 
 NAME = philo
 
@@ -12,7 +12,7 @@ OBJSB = $(SRCSB:.c=.o)
 MH = man/philo.h
 BH = bonus/philo_bonus.h
 
-CC_FLAGS = -Wall -Wextra -Werror  #fsanitize=thread
+CC_FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

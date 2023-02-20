@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 18:55:12 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/18 20:53:48 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:11:44 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static char	*ft_itoahelper(int count, char *tab, int i, long num)
 
 char	*ft_itoa(int n)
 {
-	int count;
-	char *tab;
-	int i;
-	long num;
+	int		count;
+	char	*tab;
+	int		i;
+	long	num;
 
 	i = 0;
 	num = n;

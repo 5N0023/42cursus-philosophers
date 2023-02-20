@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 19:40:21 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/19 19:24:04 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:33:08 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_philo_eat(t_philo *philo)
 	philo->eat_time++;
 	philo->lastmeal = get_ms(philo->param);
 	pthread_mutex_unlock(&philo->param->lock);
-	ft_usleep(philo->param->time_to_eat, philo->param);
+	myusleep(philo->param->time_to_eat, philo->param);
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->right->fork);
 }
@@ -83,14 +83,14 @@ void	philosopher(t_philo *philo)
 		return ;
 	}
 	if (philo->id % 2)
-		ft_usleep(philo->param->time_to_eat - 50, philo->param);
+		myusleep(philo->param->time_to_eat - 50, philo->param);
 	while (1)
 	{
 		ft_philo_eat(philo);
 		pthread_mutex_lock(&philo->param->print);
 		printf("%zu %d is sleeping \n", get_ms(philo->param), philo->id);
 		pthread_mutex_unlock(&philo->param->print);
-		ft_usleep(philo->param->time_to_sleep, philo->param);
+		myusleep(philo->param->time_to_sleep, philo->param);
 		pthread_mutex_lock(&philo->param->print);
 		printf("%zu %d is thiking \n", get_ms(philo->param), philo->id);
 		pthread_mutex_unlock(&philo->param->print);

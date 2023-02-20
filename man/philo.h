@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:15:33 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/19 19:24:26 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:33:24 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_controller
 }					t_controller;
 
 long				ft_atoi(const char *str);
-void				ft_usleep(time_t time, t_arg *param);
+void				myusleep(time_t time, t_arg *param);
 time_t				get_ms(t_arg *param);
 int					starprocess(t_arg *param);
 int					checkargformat(char **argv);

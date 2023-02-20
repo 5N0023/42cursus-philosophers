@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 19:37:21 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/19 19:23:40 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:32:50 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	ft_checkdeath(t_philo *tmp, t_controller *controller, time_t time)
 	{
 		pthread_mutex_lock(&controller->param->print);
 		ft_detachthreads(controller->head);
-		ft_usleep(controller->param->number_of_philosophers * 10,
+		myusleep(controller->param->number_of_philosophers * 10,
 			controller->param);
 		printf("%zu %d died\n", time, tmp->id);
 		free(controller);

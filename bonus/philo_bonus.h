@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:15:33 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/19 19:25:21 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:19:34 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ typedef struct s_arg
 	int				time_to_sleep;
 	int				number_of_times_each_philosopher_must_eat;
 	int				number_of_philosophers_full;
+	sem_t			*locktime;
+	sem_t			*lock;
 	sem_t			*print;
 	sem_t			*forks;
-	sem_t			*lock;
 }					t_arg;
 
 typedef struct s_philo
@@ -55,8 +56,8 @@ typedef struct s_controller
 }					t_controller;
 
 long				ft_atoi(const char *str);
-void				ft_usleep(time_t time, t_philo *philo);
-time_t				get_ms(t_philo *param);
+void				myusleep(time_t time, t_arg *param);
+time_t				get_ms(t_arg *param);
 int					starprocess(t_arg *param);
 int					checkargformat(char **argv);
 void				save_arg(t_arg *param, int argc, char **argv);
@@ -66,4 +67,6 @@ void				addtolinkedlist(t_philo **head, t_philo *new, int i,
 						int number_of_philosophers);
 void				philosopher(t_philo *philo);
 char				*ft_itoa(int n);
+void				waiteventsfromphilo(t_controller *controller);
+void				philosopher(t_philo *philo);
 #endif
