@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:36:18 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/20 20:18:08 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:56:48 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	checkargformat(char **argv)
 int	main(int argc, char **argv)
 {
 	t_arg	param;
-	int		pid;
 
 	if (argc < 5 || argc > 6)
 	{

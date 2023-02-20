@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 19:37:21 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/20 19:32:50 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:24:52 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,9 @@ int	ft_controller(t_controller *controller)
 	{
 		ft_checkeattimes(tmp);
 		if (ft_checkifalleat(tmp, controller))
-		{
 			return (1);
-		}
 		if (ft_checkdeath(tmp, controller, time))
-		{
 			return (1);
-		}
 		tmp = tmp->right;
 		i++;
 	}

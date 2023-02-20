@@ -6,7 +6,7 @@
 /*   By: mlektaib <mlektaib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 19:40:38 by mlektaib          #+#    #+#             */
-/*   Updated: 2023/02/20 20:21:06 by mlektaib         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:56:28 by mlektaib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ static void	createsem(t_arg **param, t_philo **head)
 {
 	int		i;
 	t_philo	*tmp;
-	char	*s;
-	char	*rac;
 
 	sem_unlink("/print");
 	sem_unlink("/forks");

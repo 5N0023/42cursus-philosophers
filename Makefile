@@ -19,7 +19,7 @@ all: $(NAME)
 bonus: $(BONUS)
 
 %_bonus.o : %_bonus.c $(BH)
-	@cc -c $< -o $@
+	@cc $(CC_FLAGS) -c $< -o $@
 
 %.o : %.c $(MH)
 	@cc $(CC_FLAGS) -c $< -o $@
